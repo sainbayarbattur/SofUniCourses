@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniORM", "MiniORM\MiniORM.csproj", "{86D40984-E71A-4041-ACF5-B3CC333585A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniORM.App", "MiniORM.App\MiniORM.App.csproj", "{386F145A-0818-4FFE-9C50-35BBC851BC13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniORM.App", "MiniORM.App\MiniORM.App.csproj", "{586B43E2-F56D-4149-BFCD-ECA7326F6651}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{86D40984-E71A-4041-ACF5-B3CC333585A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86D40984-E71A-4041-ACF5-B3CC333585A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86D40984-E71A-4041-ACF5-B3CC333585A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{386F145A-0818-4FFE-9C50-35BBC851BC13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{386F145A-0818-4FFE-9C50-35BBC851BC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{386F145A-0818-4FFE-9C50-35BBC851BC13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{386F145A-0818-4FFE-9C50-35BBC851BC13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{586B43E2-F56D-4149-BFCD-ECA7326F6651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{586B43E2-F56D-4149-BFCD-ECA7326F6651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{586B43E2-F56D-4149-BFCD-ECA7326F6651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{586B43E2-F56D-4149-BFCD-ECA7326F6651}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

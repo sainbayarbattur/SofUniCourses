@@ -26,7 +26,7 @@ namespace MiniORM
             typeof(DateTime)
         };
 
-        protected DbContext(string connectionString)
+        public DbContext(string connectionString)
         {
             this.connection = new DatabaseConnection(connectionString);
 
@@ -153,7 +153,8 @@ namespace MiniORM
                 var dbSetType = dbSetProperty.Key;
 
                 var mapRealtionsgeneric = typeof(DbContext)
-                    .GetMethod("MapRealtions", BindingFlags.Instance | BindingFlags.NonPublic);
+                    .GetMethod("MapRealtions", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .MakeGenericMethod(dbSetType);
 
                 var dbSet = dbSetProperty.Value.GetValue(this);
 
@@ -254,7 +255,7 @@ namespace MiniORM
                     var foreignKeyValue = foreignKey.GetValue(entity);
 
                     var navigationPropertyValue = ((IEnumerable<object>)navigationDbSet)
-                        .First(currentNavigationProperty => navigationPrimaryKey.GetValue(currentNavigationProperty).Equals(foreignKey));
+                        .First(currentNavigationProperty => navigationPrimaryKey.GetValue(currentNavigationProperty).Equals(foreignKeyValue));
 
                     navigationProperty.SetValue(entity, navigationPropertyValue);
                 }
