@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SoftUni.Models;
-
-namespace SoftUni.Data
+﻿namespace SoftUni.Data
 {
+    using Microsoft.EntityFrameworkCore;
+    using SoftUni.Models;
+
     public partial class SoftUniContext : DbContext
     {
         public SoftUniContext()
@@ -25,7 +25,7 @@ namespace SoftUni.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=TEDDY\\SQLEXPRESS02;Database=SoftUni;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Server=TEDDY\\SQLEXPRESS02;Database=SoftUni;Integrated Security=True");
             }
         }
 
