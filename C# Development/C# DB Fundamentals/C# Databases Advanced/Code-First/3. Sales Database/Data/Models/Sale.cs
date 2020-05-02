@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace P03_SalesDatabase.Data.Models
+﻿namespace P03_SalesDatabase.Data.Models
 {
+    using System;
+
     public class Sale
     {
         public int SaleId { get; set; }

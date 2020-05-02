@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using P03_SalesDatabase.Data.Models;
-
-namespace P03_SalesDatabase.Data
+﻿namespace P03_SalesDatabase.Data
 {
+    using Microsoft.EntityFrameworkCore;
+    using P03_SalesDatabase.Data.Models;
+
     public class SalesContext : DbContext
     {
         public SalesContext()
@@ -16,7 +16,10 @@ namespace P03_SalesDatabase.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=TEDDY\SQLEXPRESS02;Database=Sales;Integrated Security=True;");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"Server=TEDDY\SQLEXPRESS02;Database=SaleDatabase;Integrated security=true");
+            }
         }
 
         public DbSet<Customer> Customers { get; set; }
@@ -27,101 +30,64 @@ namespace P03_SalesDatabase.Data
 
         public DbSet<Store> Stores { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    ConfigureProductEntity(modelBuilder);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>(p =>
+            {
+                p.HasKey(p => p.ProductId);
 
-        //    ConfigureCustomerEntity(modelBuilder);
+                p.Property(c => c.Name)
+                .HasMaxLength(50)
+                .IsUnicode(true);
 
-        //    ConfigureStoreEntity(modelBuilder);
+                p.HasMany(p => p.Sales)
+                .WithOne(s => s.Product);
+            });
 
-        //    ConfigureSaleEntity(modelBuilder);
-        //}
+            modelBuilder.Entity<Customer>(c => 
+            {
+                c.HasKey(c => c.CustomerId);
 
-        //private void ConfigureProductEntity(ModelBuilder modelBuilder)
-        //{
-        //    // Primary Key
-        //    modelBuilder.Entity<Product>()
-        //                .HasKey(p => p.ProductId);
+                c.Property(c => c.Name)
+                .HasMaxLength(100)
+                .IsUnicode(true);
 
-        //    // Propety validations
-        //    modelBuilder.Entity<Product>()
-        //                .Property(p => p.Name)
-        //                .HasMaxLength(50)
-        //                .IsRequired()
-        //                .IsUnicode();
+                c.Property(c => c.Email)
+                .HasMaxLength(80)
+                .IsUnicode(false);
 
+                c.HasMany(c => c.Sales)
+                .WithOne(s => s.Customer);
+            });
 
-        //    // Relations in Sale configure method
-        //}
+            modelBuilder.Entity<Sale>(s =>
+            {
+                s.HasKey(s => s.SaleId);
 
-        //private void ConfigureCustomerEntity(ModelBuilder modelBuilder)
-        //{
-        //    // Primary Key
-        //    modelBuilder.Entity<Customer>()
-        //                .HasKey(c => c.CustomerId);
+                s.HasOne(s => s.Product)
+                .WithMany(s => s.Sales)
+                .HasForeignKey(s => s.ProductId);
 
-        //    // Propety validations
-        //    modelBuilder.Entity<Customer>()
-        //                .Property(c => c.Name)
-        //                .HasMaxLength(100)
-        //                .IsRequired()
-        //                .IsUnicode();
+                s.HasOne(s => s.Customer)
+                .WithMany(s => s.Sales)
+                .HasForeignKey(s => s.CustomerId);
 
-        //    modelBuilder.Entity<Customer>()
-        //                .Property(c => c.Email)
-        //                .HasMaxLength(80)
-        //                .IsRequired();
+                s.HasOne(s => s.Store)
+                .WithMany(s => s.Sales)
+                .HasForeignKey(s => s.StoreId);
+            });
 
-        //    modelBuilder.Entity<Customer>()
-        //                .Property(c => c.CreditCardNumber)
-        //                .HasColumnType("CHAR(19)");
+            modelBuilder.Entity<Store>(s =>
+            {
+                s.HasKey(s => s.StoreId);
 
-        //    // Relations in Sale configure method
-        //}
+                s.Property(c => c.Name)
+                .HasMaxLength(80)
+                .IsUnicode(true);
 
-        //private void ConfigureStoreEntity(ModelBuilder modelBuilder)
-        //{
-        //    // Primary Key
-        //    modelBuilder.Entity<Store>()
-        //                .HasKey(s => s.StoreId);
-
-        //    // Propety validations
-        //    modelBuilder.Entity<Store>()
-        //                .Property(s => s.Name)
-        //                .HasMaxLength(80)
-        //                .IsRequired()
-        //                .IsUnicode();
-
-        //    // Relations in Sale configure method
-        //}
-
-        //private void ConfigureSaleEntity(ModelBuilder modelBuilder)
-        //{
-        //    // Primary Key
-        //    modelBuilder.Entity<Sale>()
-        //                .HasKey(s => s.SaleId);
-
-        //    // Propety validations
-        //    modelBuilder.Entity<Sale>()
-        //                .Property(s => s.Date)
-        //                .HasDefaultValueSql("GETDATE()");
-
-        //    // Relations
-        //    modelBuilder.Entity<Sale>()
-        //                .HasOne(s => s.Customer)
-        //                .WithMany(c => c.Sales)
-        //                .HasForeignKey(s => s.CustomerId);
-
-        //    modelBuilder.Entity<Sale>()
-        //                .HasOne(s => s.Product)
-        //                .WithMany(p => p.Sales)
-        //                .HasForeignKey(s => s.ProductId);
-
-        //    modelBuilder.Entity<Sale>()
-        //                .HasOne(s => s.Store)
-        //                .WithMany(st => st.Sales)
-        //                .HasForeignKey(s => s.StoreId);
-        //}
+                s.HasMany(s => s.Sales)
+                .WithOne(s => s.Store);
+            });
+        }
     }
 }
