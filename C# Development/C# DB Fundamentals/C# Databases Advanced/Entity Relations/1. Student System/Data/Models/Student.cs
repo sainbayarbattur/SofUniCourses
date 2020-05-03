@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
+    using System.ComponentModel.DataAnnotations;
 
     public class Student
     {
@@ -16,9 +16,8 @@
 
         public DateTime? Birthday { get; set; }
 
-        public ICollection<Homework> HomeworkSubmissions { get; set; } = new HashSet<Homework>();
-
-        [NotMapped]
         public ICollection<StudentCourse> CourseEnrollments { get; set; } = new HashSet<StudentCourse>();
+
+        public ICollection<Homework> HomeworkSubmissions { get; set; } = new HashSet<Homework>();
     }
 }

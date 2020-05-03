@@ -1,22 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
-using P01_StudentSystem.Data;
-using P01_StudentSystem.Data.Models;
-using System;
-
-namespace P01_StudentSystem
+﻿namespace P01_StudentSystem
 {
+    using P01_StudentSystem.Data;
+    using P01_StudentSystem.Data.Models;
+    using System;
+
     public class StartUp
     {
         public static void Main()
         {
-            using (var context = new StudentSystemContext())
-            {
-                context.Database.Migrate();
+            using var db = new StudentSystemContext();
 
-                context.Students.Add(new Student { Name = "f" });
-
-                context.SaveChanges();
-            }
+            db.Database.EnsureCreated();
         }
     }
 }

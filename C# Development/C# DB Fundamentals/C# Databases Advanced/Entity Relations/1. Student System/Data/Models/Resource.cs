@@ -1,5 +1,8 @@
 ﻿namespace P01_StudentSystem.Data.Models
 {
+    using P01_StudentSystem.Data.Enums;
+    using System.ComponentModel.DataAnnotations;
+
     public class Resource
     {
         public int ResourceId { get; set; }
@@ -8,7 +11,7 @@
 
         public string Url { get; set; }
 
-        public ResourceType  ResourceType { get; set; }
+        public ResourceType ResourceType { get; set; }
 
         public int CourseId { get; set; }
 
