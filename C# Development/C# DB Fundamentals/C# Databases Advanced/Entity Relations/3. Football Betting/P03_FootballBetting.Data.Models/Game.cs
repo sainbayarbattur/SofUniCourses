@@ -2,38 +2,33 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Game
     {
         public int GameId { get; set; }
 
-        [InverseProperty("TeamId")]
-        public int HomeTeamId { get; set; }
-
-        public Team HomeTeam { get; set; }
-
-        [InverseProperty("TeamId")]
-        public int AwayTeamId { get; set; }
-
-        public Team AwayTeam { get; set; }
-
-        public int HomeTeamGoals { get; set; }
+        public decimal AwayTeamBetRate { get; set; }
 
         public int AwayTeamGoals { get; set; }
 
-        public DateTime DateTime { get; set; }
-
-        public decimal HomeTeamBetRate { get; set; }
-
-        public decimal AwayTeamBetRate { get; set; }
+        public int AwayTeamId { get; set; }
+        public Team AwayTeam { get; set; }
 
         public decimal DrawBetRate { get; set; }
 
+        public decimal HomeTeamBetRate { get; set; }
+
+        public int HomeTeamGoals { get; set; }
+
+        public int HomeTeamId { get; set; }
+        public Team HomeTeam { get; set; }
+
         public string Result { get; set; }
 
-        public ICollection<Bet> Bets { get; set; }
+        public DateTime DateTime { get; set; }
 
-        public ICollection<PlayerStatistic> PlayerStatistics { get; set; } = new HashSet<PlayerStatistic>();
+        public ICollection<PlayerStatistic> PlayerStatistics { get; set; }
+
+        public ICollection<Bet> Bets { get; set; }
     }
 }

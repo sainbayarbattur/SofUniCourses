@@ -8,7 +8,7 @@
 
         public decimal Amount { get; set; }
 
-        public Prediction Prediction { get; set; }
+        public double Prediction { get; set; }
 
         public DateTime DateTime { get; set; }
 
