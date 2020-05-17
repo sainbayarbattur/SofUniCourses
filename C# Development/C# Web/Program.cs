@@ -3,6 +3,7 @@
     using System;
     using System.Data;
     using System.IO;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Net.Sockets;
@@ -27,13 +28,19 @@
                 string request = Encoding.UTF8.GetString(requestBytes, 0, bytesRead);
                 Console.WriteLine(request);
 
+                string responseText = "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg\" />>";
+
+                var catBytes = File.ReadAllBytes("./../../../Cat03.jpg");
+                var responseTextBytes = Encoding.UTF8.GetBytes(responseText);
+
                 string response = 
                 "HTTP/1.1 200 OK"
                     + "\r\n" + "Server: Softuni/1.0"
                     + "\r\n" + "Content-Type: text/html"
+                    + "\r\n" + $"Content-Length: {responseTextBytes.Count()}"
                     + "\r\n"
                     + "\r\n"
-                    + "<h1>Hello</h1>";
+                    + responseText;
 
                 var responseBytes = Encoding.UTF8.GetBytes(response);
 
