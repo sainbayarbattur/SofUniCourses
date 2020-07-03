@@ -1,0 +1,2 @@
+# JsCore
+Softuni - JS Advanced

@@ -1,0 +1,17 @@
+{{> header}}
+<!-- Dashboard (All Causes View) -->
+<div style="margin-top:3%; padding-top: 3%;" class="container">
+    {{#if causes}}
+    {{else}}
+    <h1 class="text-center">NO CAUSES :(</h1>
+    {{/if}}
+    <div style="margin-bottom:25%;" class="row">
+        <div class="col-lg-12">
+            {{#each causes}}
+            {{> cause}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{> footer}}
+<!-- ./Dashboard (All Causes View) -->

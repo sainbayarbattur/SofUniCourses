@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- meta data -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DonUni</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script  src="./global/notifications.js"></script>
+    <!-- <link rel="stylesheet" href="./styles/styles.css"> -->
+    <!-- meta data -->
+
+    <!-- put your firebase links here -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <!-- put your firebase links here -->
+
+    <!-- put your moduls here -->
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="./node_modules/sammy/lib/sammy.js"></script>
+    <script src="./node_modules/sammy/lib/plugins/sammy.handlebars.js"></script>
+    <script src="./node_modules/@popperjs/core/dist/umd/popper.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- put your moduls here -->
+
+    <!-- modules !!do not change that!! -->
+    <script type="module" src="./config/config.js"></script>
+    <script type="module" src="./services/get.js"></script>
+    <script type="module" src="./services/post.js"></script>
+    <script type="module" src="./firebase/firebase-auth.js"></script>
+    <script type="module" src="./services/crud.js"></script>
+    <!-- modules -->
+</head>
+
+<body>
+    <section onclick="deleteNotification()" id="notifications">
+    </section>
+    <script type="module" src="./app.js"></script>
+    <div id="main">
+
+    </div>
+</body>
+
+</html>

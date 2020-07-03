@@ -1,0 +1,25 @@
+{
+  "name": "teammanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "handlebars": "^4.7.3",
+    "sammy": "^0.7.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TodorNedkovski/JS-Advanced.git"
+  },
+  "author": "TodorNedkovski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TodorNedkovski/JS-Advanced/issues"
+  },
+  "homepage": "https://github.com/TodorNedkovski/JS-Advanced#readme"
+}

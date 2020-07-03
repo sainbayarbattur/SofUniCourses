@@ -1,0 +1,9 @@
+{{#each players}}
+<div class="player" id="{{@key}}">
+    <p class="name">Name:{{name}}</p>
+    <p class="money">Money:{{money}}</p>
+    <p class="bullets">Bullets:{{bullets}}</p>
+    <button class="play" onclick="events.play('{{@key}}')">Play</button>
+    <button class="delete" onclick="events.deletePlayer(`{{@key}}`)">Delete</button>
+</div>
+{{/each}}

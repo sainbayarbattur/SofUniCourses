@@ -1,0 +1,1 @@
+export const url = `https://teammanager-3ffdb.firebaseio.com/`  // <-- you can put your url here
